@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Controller : MonoBehaviour
+public class NPC_Controller : MonoBehaviour
 {
 
      [SerializeField]
@@ -10,7 +10,7 @@ public class Player_Controller : MonoBehaviour
     private Vector2 movement;
     private Rigidbody2D rbody;
 
- 
+
     private void Awake()
     {
         rbody = GetComponent<Rigidbody2D>();
@@ -18,8 +18,10 @@ public class Player_Controller : MonoBehaviour
 
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+
+        movement.x = Random.Range(-0.5f, 0.5f);
+        movement.y = Random.Range(-0.5f, 0.5f);
+
     }
 
     void FixedUpdate()
