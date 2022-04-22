@@ -16,6 +16,17 @@ public class Player_Controller : MonoBehaviour
         rbody = GetComponent<Rigidbody2D>();
     }
 
+
+    public void OnCollisionEnter2D(Collision2D collision){
+        //collided =true;
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("ciao");
+            //collision.gameObject.SendMessage("ApplyDamage", 10);
+        }
+    }
+
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
