@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player_Controller : MonoBehaviour
 {
@@ -9,11 +10,13 @@ public class Player_Controller : MonoBehaviour
     private float movementSpeed;
     private Vector2 movement;
     private Rigidbody2D rbody;
-
+    public TextMeshProUGUI txt;
+    private int counter=0;
  
     private void Awake()
     {
         rbody = GetComponent<Rigidbody2D>();
+        txt.SetText(counter.ToString());
     }
 
 
@@ -22,7 +25,10 @@ public class Player_Controller : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("ciao");
+            
+            counter++;
+
+            txt.SetText(counter.ToString());
             //collision.gameObject.SendMessage("ApplyDamage", 10);
         }
     }

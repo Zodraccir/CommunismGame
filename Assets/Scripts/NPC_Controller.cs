@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class NPC_Controller : MonoBehaviour
@@ -12,22 +13,35 @@ public class NPC_Controller : MonoBehaviour
     private float accelerationTime = 2f;
     private float timeLeft;
 
+    SpriteRenderer m_SpriteRenderer;
+
     public bool stop=false;
+    Follow_Controller script;
+   
 
     private void Awake()
     {
         gameObject.tag = "Enemy";
         rbody = GetComponent<Rigidbody2D>();
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
 
 
     }
 
     public void OnCollisionEnter2D(Collision2D collision){
         //collided =true;
-
+        if(!stop){
         if (collision.gameObject.tag == "Player")
         {
+            m_SpriteRenderer.color=Color.yellow;
+            Debug.Log(this.gameObject);
+            script=this.gameObject.GetComponent<Follow_Controller>();
+
+            script.enabled=true;
+            this.enabled=false;
+
             stop=true;
+        }
         }
     }
 
